@@ -1,0 +1,29 @@
+---
+import { Image, Picture } from "astro:assets";
+import MainLayout from "src/layouts/MainLayout.astro";
+
+import image05 from "@images/post-05.png";
+---
+
+<MainLayout>
+    <h1 class="text-5xl text-white">Imágenes</h1>
+
+    <Image
+        src={image05}
+        width={250}
+        height={250}
+        quality="high"
+        alt="Hola"
+        format="webp"
+    />
+
+    <h1>Picture</h1>
+    <Picture
+        src={image05}
+        widths={[240, 540, 720, image05.width]}
+        sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${image05.width}px`}
+        alt="Hola"
+        formats={["webp", "avif", "jpg"]}
+        widths={[]}
+    />
+</MainLayout>
