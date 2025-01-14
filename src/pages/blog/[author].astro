@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 
 import { siteConfig } from "src/config/site-config";
 import BlogPost from "src/components/BlogPost.astro";
