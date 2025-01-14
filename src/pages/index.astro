@@ -4,7 +4,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 import { siteConfig } from "../config/site-config.ts";
 
-const blogPosts = await getCollection("blog");
+const blogPosts = await getCollection(
+	"blog",
+	(post) => post.data.isDraft === false,
+);
 ---
 
 <MainLayout title={siteConfig.name}>
@@ -16,6 +19,9 @@ const blogPosts = await getCollection("blog");
 			</h1>
 
 			<a href="/blog/1" class="text-blue-500 hover:underline"> Blogs </a>
+			<a href="/authors" class="text-blue-500 hover:underline ml-4">
+				Autores
+			</a>
 
 			<div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
 				{blogPosts.map((post) => <BlogPost post={post} />)}
